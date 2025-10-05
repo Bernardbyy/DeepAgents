@@ -1,0 +1,5 @@
+langgraph-cli[inmem]
+tavily-python
+deepagents
+python-dotenv
+langchain-google-genai
