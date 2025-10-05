@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_anthropic import ChatAnthropic 
 
+from langgraph.checkpoint.memory import InMemorySaver
+
 load_dotenv() 
 
 # It's best practice to initialize the client once and reuse it.
@@ -75,5 +77,16 @@ agent = create_deep_agent(
     tools=[internet_search],
     instructions=research_instructions,
     subagents=[critique_sub_agent, research_sub_agent],
-    model=anthropic_llm
+    model=anthropic_llm,
+    # tool_configs={
+    #     "internet_search": {
+    #         "allow_respond": True,
+    #         "allow_accept": False,
+    #         "allow_edit": False
+    #     }
+    # }
 ).with_config({"recursion_limit": 1000})
+
+# A checkpointer is required for Human-in-the-Loop to work
+# checkpointer = InMemorySaver()
+# agent.checkpointer = checkpointer

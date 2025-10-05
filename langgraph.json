@@ -1,7 +1,7 @@
 {
   "dependencies": ["."],
   "graphs": {
-    "research": "./research_agent.py:agent"
+    "research": "./llm_compass.py:agent"
   },
   "env": ".env"
 }
