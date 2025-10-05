@@ -19,20 +19,21 @@ load_dotenv()
 # It's best practice to initialize the client once and reuse it.
 tavily_client = TavilyClient(api_key=os.environ["TAVILY_API_KEY"])
 
-# gemini_llm = ChatGoogleGenerativeAI(
-#     model="gemini-2.5-flash", 
-#     temperature=0,
-# )
+gemini_llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash", 
+    temperature=0,
+)
 
 anthropic_llm = ChatAnthropic(
     model="claude-3-5-haiku-latest",
     temperature=0,
+    max_tokens=8192
 )
 
 # Search tool to use to do research
 def internet_search(
     query: str,
-    max_results: int = 5,
+    max_results: int = 3,
     topic: Literal["general", "news", "finance"] = "general",
     include_raw_content: bool = False,
 ):

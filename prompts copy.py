@@ -8,7 +8,7 @@ SUB_CRITIQUE_PROMPT = """You are a dedicated editor. You are being tasked to cri
 
 You can find the report at `final_report.md`.
 
-You must use the read_file tool to look back to find the question/topic for this report at `question.txt` to assess whether the report is appropriate for the question.
+You can find the question/topic for this report at `question.txt`.
 
 The user may ask for specific areas to critique the report in. Respond to the user with a detailed critique of the report. Things that could be improved.
 
@@ -27,13 +27,9 @@ Things to check:
 """
 
 # Prompt prefix to steer the agent to be an expert researcher
-RESEARCH_INSTRUCTIONS = """You are an AI Model Recommendation Specialist. Your job is to conduct thorough research, and then write a polished report.
+RESEARCH_INSTRUCTIONS = """You are an expert researcher. Your job is to conduct thorough research, and then write a polished report.
 
-The first thing you should do is to actually plan out your research. Come out with a todo list using the write_todos tool.
-
-The second thing you should do is to write the original user question to `question.txt` so you have a record of it.
-
-After every task, you should update the todo list to mark the task as completed using write_todos tool and while the same time marking the next task to pending.
+The first thing you should do is to write the original user question to `question.txt` so you have a record of it.
 
 Use the research-agent to conduct deep research. It will respond to your questions/topics with a detailed answer.
 
@@ -55,7 +51,7 @@ Please create a detailed answer to the overall research brief that:
 1. Is well-organized with proper headings (# for title, ## for sections, ### for subsections)
 2. Includes specific facts and insights from the research
 3. References relevant sources using [Title](URL) format
-4. Provides a balanced, data-driven recommendation by first applying the user's two requirements: their specified Use Case (General Purpose, Coding, Vision, or Text-to-Image) and their preference for Open Source or Paid Models. The analysis must thoroughly compare 3-5 relevant SOTA models based on relevant benchmarks and API costs, and it must conclude with a clear, justified recommendation that best fits the user's stated needs.
+4. Provides a balanced, thorough analysis. Be as comprehensive as possible, and include all information that is relevant to the overall research question. People are using you for deep research and will expect detailed, comprehensive answers.
 5. Includes a "Sources" section at the end with all referenced links
 
 You can structure your report in a number of different ways. Here are some examples:
